@@ -87,6 +87,10 @@ fn claim_drop() {
     assert(owner_balance == supply - drop_amount, 'Owner balance wrong');
     assert(contract_balance == 0, 'Contract balance wrong');
     assert(claimer_balance == drop_amount, 'Claimer balance wrong');
+
+    let claim: BoltDrop = dispatcher.get_pending_drop(key_pair.public_key);
+    assert(claim.amount == 0, 'Claimed amount wrong');
+    assert(claim.token_no == 0, 'Claimed token_no wrong');
 }
 
 #[test]
